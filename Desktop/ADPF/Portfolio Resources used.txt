@@ -1,0 +1,8 @@
+Portfolio Resources used
+https://mycolor.space/gradient3?ori=to+right&hex=%236D83F2&hex2=%236A98F0&hex3=%23E2E2E2&submit=submit
+https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
+https://www.flaticon.com/
+https://www.github.com/Amanyadav0007/Responsive-Navbar/blob/main/script.js
+https://www.cssportal.com/css-clip-path-generator/
+https://iconscout.com/icons/
+https://icons8.com/icons/

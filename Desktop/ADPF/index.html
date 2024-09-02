@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD-Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets\icons8-laptop-coding-100.png" type="image/x-icon">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".projects-container");
+    const backButton = document.getElementById("backButton");
+    const forwardButton = document.getElementById("forwardButton");
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Scroll back
+    backButton.addEventListener("click", function () {
+        container.scrollBy({
+            left: -container.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+    // Scroll forward
+    forwardButton.addEventListener("click", function () {
+        container.scrollBy({
+            left: container.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+    // Update button states based on scroll position
+    container.addEventListener("scroll", function () {
+        backButton.disabled = container.scrollLeft === 0;
+        forwardButton.disabled = container.scrollWidth - container.scrollLeft <= container.clientWidth;
+    });
+
+    // Handle drag scrolling
+    container.addEventListener("mousedown", (e) => {
+        isDown = true;
+        container.classList.add('active');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener("mouseleave", () => {
+        isDown = false;
+        container.classList.remove('active');
+    });
+
+    container.addEventListener("mouseup", () => {
+        isDown = false;
+        container.classList.remove('active');
+    });
+
+    container.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 3; // Scroll speed multiplier
+        container.scrollLeft = scrollLeft - walk;
+    });
+
+    // Initialize button states on load
+    container.dispatchEvent(new Event('scroll'));
+});
+
+    </script>
+</head>
+<body>
+    <ul class="background">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#home" class="nav-logo">AD</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="home-text">
+            <p id="para">Hello, I am</p>
+            <h3 id="h3">Anandita Dakshayani</h3>
+            <a href="assets\Anandita_Dakshayani_Garimella_Resume.pdf" id="a-resume" download="Anandita_Dakshayani_Garimella_Resume.pdf">
+                <button type="button" id="btn-resume">Download Resume</button>
+            </a>
+        </div>
+        <div class="home-card">
+            <div class="card">
+                <div id="code-card">
+                    <p>&ensp;</p>
+                    <p>&ensp;&ensp;1&ensp;class Person:</p>
+                    <p>&ensp;&ensp;2&ensp;&ensp;def __init__(self):</p>
+                    <p>&ensp;&ensp;3&ensp;&ensp;&ensp;self.name = "Anandita Dakshyani"</p>
+                    <p>&ensp;&ensp;4&ensp;&ensp;&ensp;self.interests = ["Data Science","Machine Learning"]</p>
+                    <p>&ensp;&ensp;5&ensp;&ensp;&ensp;self.age = datetime.now().year - 2001</p>
+                    <p>&ensp;</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <div class="about-bg" id="about-bg"></div>
+        <div class="about-content" id="about-content">
+            <h3 id="text-h3">Hey There!👋</h3>     
+            <div class="content-text">
+                <p id="text-p1"><strong>I'm Anandita Dakshayani Garimella,</strong> but you can call me AD. I'm a tech enthusiast with a passion for AI, ML, and Data Science. 🚀 I love diving into complex problems and coming up with innovative solutions. 🌍</p>
+                <p id="text-p2">Right now, I'm working on an awesome webpage to showcase my skills and projects. Stay tuned for some cool stuff! 🌟 My goal is to apply AI, ML, and Data Science to real-world problems and become a thought leader in the AI/ML space. 🌐</p>
+                <p id="text-p3">Thanks for stopping by! I'm always up for connecting, sharing ideas, and exploring new opportunities. Hit me up! 🤓</p>
+            </div>
+            <div class="content-cards">
+                <ul class="about-icon">
+                    <li class="icon-content">
+                      <a
+                        href="https://linkedin.com/in/anandita-dakshayani-9621a0199"
+                        aria-label="LinkedIn"
+                        data-social="linkedin"
+                      >
+                        <div class="filled"></div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-linkedin"
+                          viewBox="0 0 16 16"
+                          xml:space="preserve"
+                        >
+                          <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                      <div class="tooltip">LinkedIn</div>
+                    </li>
+                    <li class="icon-content">
+                      <a href="https://www.github.com/anandita-3217" aria-label="GitHub" data-social="github">
+                        <div class="filled"></div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-github"
+                          viewBox="0 0 16 16"
+                          xml:space="preserve"
+                        >
+                          <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                      <div class="tooltip">GitHub</div>
+                    </li>
+                    <li class="icon-content">
+                      <a
+                        href="https://www.instagram.com/diana__3217?igsh=MmNhNHJuM2ZvOGg1 "
+                        aria-label="Instagram"
+                        data-social="instagram"
+                      >
+                        <div class="filled"></div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-instagram"
+                          viewBox="0 0 16 16"
+                          xml:space="preserve"
+                        >
+                          <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </a>
+                      <div class="tooltip">Instagram</div>
+                    </li>
+                    <li class="icon-content">
+                        <a href="https://twitter.com/" aria-label="Twitter" data-social="twitter">
+                          <div class="filled"></div>
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-x"
+                          viewBox="0 0 50 50"
+                          xml:space="preserve"
+                        >
+                          <path
+                            d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"
+                          ></path>
+                        </svg>
+                        
+                        </a>
+                        <div class="tooltip">Twitter</div>
+                      </li>
+                  </ul>
+            </div>
+        </div>
+    </section>
+    <section class="skills" id="skills">
+            <h3 id="skills-h3">My Skills</h3>
+            <div class="skills-content">
+            <div class="skills-cards-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#6D83F2" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
+                      <path fill="#6A98F0" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
+                      <path fill="#FFF" d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5H24z M32.9,17l0.3-4H24v4H32.9z"></path>
+                      <path fill="#EEE" d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#E65100" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
+                      <path fill="#FF6D00" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
+                      <path fill="#FFF" d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5H24z M32.9,17l0.3-4H24v4H32.9z"></path>
+                      <path fill="#EEE" d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"></path>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                        <g transform="scale(5.33333,5.33333)">
+                          <path d="M41,5h-34l3,34l14,4l14,-4l3,-34z" fill="#6D83F2"></path>
+                          <path d="M24,8v31.9l11.2,-3.2l2.5,-28.7z" fill="#6A98F0"></path>
+                          <path d="M33.1,13h-9.1v4h4.9l-0.3,4h-4.6v4h4.4l-0.3,4.5l-4.1,1.4v4.2l7.9,-2.6l0.7,-11.5v0z" fill="#ffffff"></path>
+                          <path d="M24,13v4h-8.9l-0.3,-4zM19.4,21l0.2,4h4.4v-4zM19.8,27h-4l0.3,5.5l7.9,2.6v-4.2l-4.1,-1.4z" fill="#eeeeee"></path></g></g>
+                      </svg>  
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#0277BD" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path><path fill="#039BE5" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path><path fill="#FFF" d="M33.1 13L24 13 24 17 28.9 17 28.6 21 24 21 24 25 28.4 25 28.1 29.5 24 30.9 24 35.1 31.9 32.5 32.6 21 32.6 21z"></path><path fill="#EEE" d="M24,13v4h-8.9l-0.3-4H24z M19.4,21l0.2,4H24v-4H19.4z M19.8,27h-4l0.3,5.5l7.9,2.6v-4.2l-4.1-1.4L19.8,27z"></path>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                        <g transform="scale(5.33333,5.33333)">
+                          <path d="M6,42v-36h36v36z" fill="#6d83f2"></path>
+                          <path d="M29.538,32.947c0.692,1.124 1.444,2.201 3.037,2.201c1.338,0 2.04,-0.665 2.04,-1.585c0,-1.101 -0.726,-1.492 -2.198,-2.133l-0.807,-0.344c-2.329,-0.988 -3.878,-2.226 -3.878,-4.841c0,-2.41 1.845,-4.244 4.728,-4.244c2.053,0 3.528,0.711 4.592,2.573l-2.514,1.607c-0.553,-0.988 -1.151,-1.377 -2.078,-1.377c-0.946,0 -1.545,0.597 -1.545,1.377c0,0.964 0.6,1.354 1.985,1.951l0.807,0.344c2.745,1.169 4.293,2.363 4.293,5.047c0,2.892 -2.284,4.477 -5.35,4.477c-2.999,0 -4.702,-1.505 -5.65,-3.368zM17.952,33.029c0.506,0.906 1.275,1.603 2.381,1.603c1.058,0 1.667,-0.418 1.667,-2.043v-10.589h3.333v11.101c0,3.367 -1.953,4.899 -4.805,4.899c-2.577,0 -4.437,-1.746 -5.195,-3.368z" fill="#fff"></path></g></g>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)">
+                        <path d="M6,42v-36h36v36z" fill="#ffd600"></path>
+                        <path d="M29.538,32.947c0.692,1.124 1.444,2.201 3.037,2.201c1.338,0 2.04,-0.665 2.04,-1.585c0,-1.101 -0.726,-1.492 -2.198,-2.133l-0.807,-0.344c-2.329,-0.988 -3.878,-2.226 -3.878,-4.841c0,-2.41 1.845,-4.244 4.728,-4.244c2.053,0 3.528,0.711 4.592,2.573l-2.514,1.607c-0.553,-0.988 -1.151,-1.377 -2.078,-1.377c-0.946,0 -1.545,0.597 -1.545,1.377c0,0.964 0.6,1.354 1.985,1.951l0.807,0.344c2.745,1.169 4.293,2.363 4.293,5.047c0,2.892 -2.284,4.477 -5.35,4.477c-2.999,0 -4.702,-1.505 -5.65,-3.368zM17.952,33.029c0.506,0.906 1.275,1.603 2.381,1.603c1.058,0 1.667,-0.418 1.667,-2.043v-10.589h3.333v11.101c0,3.367 -1.953,4.899 -4.805,4.899c-2.577,0 -4.437,-1.746 -5.195,-3.368z" fill="#000001"></path></g></g>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <rect width="36" height="36" x="6" y="6" fill="#6D83F2"></rect>
+                      <polygon fill="#fff" points="27.49,22 14.227,22 14.227,25.264 18.984,25.264 18.984,40 22.753,40 22.753,25.264 27.49,25.264"></polygon>
+                      <path fill="#fff" d="M39.194,26.084c0,0-1.787-1.192-3.807-1.192s-2.747,0.96-2.747,1.986 c0,2.648,7.381,2.383,7.381,7.712c0,8.209-11.254,4.568-11.254,4.568V35.22c0,0,2.152,1.622,4.733,1.622s2.483-1.688,2.483-1.92 c0-2.449-7.315-2.449-7.315-7.878c0-7.381,10.658-4.469,10.658-4.469L39.194,26.084z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <rect width="36" height="36" x="6" y="6" fill="#1976d2"></rect>
+                      <polygon fill="#fff" points="27.49,22 14.227,22 14.227,25.264 18.984,25.264 18.984,40 22.753,40 22.753,25.264 27.49,25.264"></polygon>
+                      <path fill="#fff" d="M39.194,26.084c0,0-1.787-1.192-3.807-1.192s-2.747,0.96-2.747,1.986 c0,2.648,7.381,2.383,7.381,7.712c0,8.209-11.254,4.568-11.254,4.568V35.22c0,0,2.152,1.622,4.733,1.622s2.483-1.688,2.483-1.92 c0-2.449-7.315-2.449-7.315-7.878c0-7.381,10.658-4.469,10.658-4.469L39.194,26.084z"></path>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#bdbdbd" d="M23.933 2L3 9.285 6.308 36.408 23.955 46 41.693 36.278 45 9.156z"></path>
+                      <path fill="#6D83F2" d="M42.818 10.527L24 4.135 24 43.695 39.832 35.017z"></path>
+                      <path fill="#6A98F0" d="M23.941 4.115L5.181 10.644 8.168 35.143 23.951 43.721 24 43.695 24 4.135z"></path>
+                      <path fill="#bdbdbd" d="M24 5.996L24 15.504 32.578 34 36.987 34z"></path>
+                      <path fill="#eee" d="M11.013 34L15.422 34 24 15.504 24 5.996z"></path>
+                      <path fill="#bdbdbd" d="M24 24H30V28H24z"></path>
+                      <path fill="#eee" d="M18 24H24V28H18z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#bdbdbd" d="M23.933 2L3 9.285 6.308 36.408 23.955 46 41.693 36.278 45 9.156z"></path>
+                      <path fill="#b71c1c" d="M42.818 10.527L24 4.135 24 43.695 39.832 35.017z"></path>
+                      <path fill="#dd2c00" d="M23.941 4.115L5.181 10.644 8.168 35.143 23.951 43.721 24 43.695 24 4.135z"></path>
+                      <path fill="#bdbdbd" d="M24 5.996L24 15.504 32.578 34 36.987 34z"></path>
+                      <path fill="#eee" d="M11.013 34L15.422 34 24 15.504 24 5.996z"></path>
+                      <path fill="#bdbdbd" d="M24 24H30V28H24z"></path><path fill="#eee" d="M18 24H24V28H18z"></path>
+                      </svg>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#6D83F2" d="M24.047,5c-1.555,0.005-2.633,0.142-3.936,0.367c-3.848,0.67-4.549,2.077-4.549,4.67V14h9v2H15.22h-4.35c-2.636,0-4.943,1.242-5.674,4.219c-0.826,3.417-0.863,5.557,0,9.125C5.851,32.005,7.294,34,9.931,34h3.632v-5.104c0-2.966,2.686-5.896,5.764-5.896h7.236c2.523,0,5-1.862,5-4.377v-8.586c0-2.439-1.759-4.263-4.218-4.672C27.406,5.359,25.589,4.994,24.047,5z M19.063,9c0.821,0,1.5,0.677,1.5,1.502c0,0.833-0.679,1.498-1.5,1.498c-0.837,0-1.5-0.664-1.5-1.498C17.563,9.68,18.226,9,19.063,9z"></path>
+                      <path fill="#6A98F0" d="M23.078,43c1.555-0.005,2.633-0.142,3.936-0.367c3.848-0.67,4.549-2.077,4.549-4.67V34h-9v-2h9.343h4.35c2.636,0,4.943-1.242,5.674-4.219c0.826-3.417,0.863-5.557,0-9.125C41.274,15.995,39.831,14,37.194,14h-3.632v5.104c0,2.966-2.686,5.896-5.764,5.896h-7.236c-2.523,0-5,1.862-5,4.377v8.586c0,2.439,1.759,4.263,4.218,4.672C19.719,42.641,21.536,43.006,23.078,43z M28.063,39c-0.821,0-1.5-0.677-1.5-1.502c0-0.833,0.679-1.498,1.5-1.498c0.837,0,1.5,0.664,1.5,1.498C29.563,38.32,28.899,39,28.063,39z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                    <path fill="#0277BD" d="M24.047,5c-1.555,0.005-2.633,0.142-3.936,0.367c-3.848,0.67-4.549,2.077-4.549,4.67V14h9v2H15.22h-4.35c-2.636,0-4.943,1.242-5.674,4.219c-0.826,3.417-0.863,5.557,0,9.125C5.851,32.005,7.294,34,9.931,34h3.632v-5.104c0-2.966,2.686-5.896,5.764-5.896h7.236c2.523,0,5-1.862,5-4.377v-8.586c0-2.439-1.759-4.263-4.218-4.672C27.406,5.359,25.589,4.994,24.047,5z M19.063,9c0.821,0,1.5,0.677,1.5,1.502c0,0.833-0.679,1.498-1.5,1.498c-0.837,0-1.5-0.664-1.5-1.498C17.563,9.68,18.226,9,19.063,9z"></path>
+                    <path fill="#FFC107" d="M23.078,43c1.555-0.005,2.633-0.142,3.936-0.367c3.848-0.67,4.549-2.077,4.549-4.67V34h-9v-2h9.343h4.35c2.636,0,4.943-1.242,5.674-4.219c0.826-3.417,0.863-5.557,0-9.125C41.274,15.995,39.831,14,37.194,14h-3.632v5.104c0,2.966-2.686,5.896-5.764,5.896h-7.236c-2.523,0-5,1.862-5,4.377v8.586c0,2.439,1.759,4.263,4.218,4.672C19.719,42.641,21.536,43.006,23.078,43z M28.063,39c-0.821,0-1.5-0.677-1.5-1.502c0-0.833,0.679-1.498,1.5-1.498c0.837,0,1.5,0.664,1.5,1.498C29.563,38.32,28.899,39,28.063,39z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                    <path fill="#6A98F0" d="M23.65,24.898c-0.998-1.609-1.722-2.943-2.725-5.455C19.229,15.2,31.24,11.366,26.37,3.999c2.111,5.089-7.577,8.235-8.477,12.473C17.07,20.37,23.645,24.898,23.65,24.898z"></path>
+                    <path fill="#6A98F0" d="M23.878,17.27c-0.192,2.516,2.229,3.857,2.299,5.695c0.056,1.496-1.447,2.743-1.447,2.743s2.728-0.536,3.579-2.818c0.945-2.534-1.834-4.269-1.548-6.298c0.267-1.938,6.031-5.543,6.031-5.543S24.311,11.611,23.878,17.27z"></path><g>
+                      <path fill="#6D83F2" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01 0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505C37.521 24.053 34.464 23.266 32.084 25.055zM29.129 27.395c0 0 1.941-1.383 2.458-1.902-4.763 1.011-15.638 1.147-15.638.269 0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"></path>
+                      <path fill="#6D83F2" d="M27.935,29.571c-4.509,1.499-12.814,1.02-10.354-0.993c-1.198,0-2.974,0.963-2.974,1.889c0,1.857,8.982,3.291,15.63,0.572L27.935,29.571z"></path>
+                      <path fill="#6D83F2" d="M18.686,32.739c-1.636,0-2.695,1.054-2.695,1.822c0,2.391,9.76,2.632,13.627,0.205l-2.458-1.632C24.271,34.404,17.014,34.579,18.686,32.739z"></path>
+                      <path fill="#6D83F2" d="M36.281,36.632c0-0.936-1.055-1.377-1.433-1.588c2.228,5.373-22.317,4.956-22.317,1.784c0-0.721,1.807-1.427,3.477-1.093l-1.42-0.839C11.26,34.374,9,35.837,9,37.017C9,42.52,36.281,42.255,36.281,36.632z"></path>
+                      <path fill="#6D83F2" d="M39,38.604c-4.146,4.095-14.659,5.587-25.231,3.057C24.341,46.164,38.95,43.628,39,38.604z"></path></g>
+                    </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#F44336" d="M23.65,24.898c-0.998-1.609-1.722-2.943-2.725-5.455C19.229,15.2,31.24,11.366,26.37,3.999c2.111,5.089-7.577,8.235-8.477,12.473C17.07,20.37,23.645,24.898,23.65,24.898z"></path>
+                      <path fill="#F44336" d="M23.878,17.27c-0.192,2.516,2.229,3.857,2.299,5.695c0.056,1.496-1.447,2.743-1.447,2.743s2.728-0.536,3.579-2.818c0.945-2.534-1.834-4.269-1.548-6.298c0.267-1.938,6.031-5.543,6.031-5.543S24.311,11.611,23.878,17.27z"></path><g>
+                        <path fill="#1565C0" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01 0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505C37.521 24.053 34.464 23.266 32.084 25.055zM29.129 27.395c0 0 1.941-1.383 2.458-1.902-4.763 1.011-15.638 1.147-15.638.269 0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"></path>
+                        <path fill="#1565C0" d="M27.935,29.571c-4.509,1.499-12.814,1.02-10.354-0.993c-1.198,0-2.974,0.963-2.974,1.889c0,1.857,8.982,3.291,15.63,0.572L27.935,29.571z"></path><path fill="#1565C0" d="M18.686,32.739c-1.636,0-2.695,1.054-2.695,1.822c0,2.391,9.76,2.632,13.627,0.205l-2.458-1.632C24.271,34.404,17.014,34.579,18.686,32.739z"></path><path fill="#1565C0" d="M36.281,36.632c0-0.936-1.055-1.377-1.433-1.588c2.228,5.373-22.317,4.956-22.317,1.784c0-0.721,1.807-1.427,3.477-1.093l-1.42-0.839C11.26,34.374,9,35.837,9,37.017C9,42.52,36.281,42.255,36.281,36.632z"></path>
+                        <path fill="#1565C0" d="M39,38.604c-4.146,4.095-14.659,5.587-25.231,3.057C24.341,46.164,38.95,43.628,39,38.604z"></path></g>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#6D83F2" d="M42.2,22.1L25.9,5.8C25.4,5.3,24.7,5,24,5c0,0,0,0,0,0c-0.7,0-1.4,0.3-1.9,0.8l-3.5,3.5l4.1,4.1c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3c0,0.5-0.1,0.9-0.3,1.3l4,4c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3s-1.3,3-3,3c-1.7,0-3-1.3-3-3c0-0.5,0.1-0.9,0.3-1.3l-4-4c-0.1,0-0.2,0.1-0.3,0.1v10.4c1.2,0.4,2,1.5,2,2.8c0,1.7-1.3,3-3,3s-3-1.3-3-3c0-1.3,0.8-2.4,2-2.8V18.8c-1.2-0.4-2-1.5-2-2.8c0-0.5,0.1-0.9,0.3-1.3l-4.1-4.1L5.8,22.1C5.3,22.6,5,23.3,5,24c0,0.7,0.3,1.4,0.8,1.9l16.3,16.3c0,0,0,0,0,0c0.5,0.5,1.2,0.8,1.9,0.8s1.4-0.3,1.9-0.8l16.3-16.3c0.5-0.5,0.8-1.2,0.8-1.9C43,23.3,42.7,22.6,42.2,22.1z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#F4511E" d="M42.2,22.1L25.9,5.8C25.4,5.3,24.7,5,24,5c0,0,0,0,0,0c-0.7,0-1.4,0.3-1.9,0.8l-3.5,3.5l4.1,4.1c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3c0,0.5-0.1,0.9-0.3,1.3l4,4c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3s-1.3,3-3,3c-1.7,0-3-1.3-3-3c0-0.5,0.1-0.9,0.3-1.3l-4-4c-0.1,0-0.2,0.1-0.3,0.1v10.4c1.2,0.4,2,1.5,2,2.8c0,1.7-1.3,3-3,3s-3-1.3-3-3c0-1.3,0.8-2.4,2-2.8V18.8c-1.2-0.4-2-1.5-2-2.8c0-0.5,0.1-0.9,0.3-1.3l-4.1-4.1L5.8,22.1C5.3,22.6,5,23.3,5,24c0,0.7,0.3,1.4,0.8,1.9l16.3,16.3c0,0,0,0,0,0c0.5,0.5,1.2,0.8,1.9,0.8s1.4-0.3,1.9-0.8l16.3-16.3c0.5-0.5,0.8-1.2,0.8-1.9C43,23.3,42.7,22.6,42.2,22.1z"></path>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                          <path fill="#6D83F2" d="M38.193,18.359c-0.771-2.753-2.319-5.177-4.397-7.03l-4.598,4.598	c1.677,1.365,2.808,3.374,3.014,5.648v1.508c0.026,0,0.05-0.008,0.076-0.008c2.322,0,4.212,1.89,4.212,4.212S34.61,31.5,32.288,31.5	c-0.026,0-0.05-0.007-0.076-0.008V31.5h-6.666H24V38h8.212v-0.004c0.026,0,0.05,0.004,0.076,0.004C38.195,38,43,33.194,43,27.288	C43,23.563,41.086,20.279,38.193,18.359z"></path>
+                          <path fill="#C7D0FF" d="M19.56,25.59l4.72-4.72c-0.004-0.005-0.008-0.009-0.011-0.013l-4.717,4.717	C19.554,25.579,19.557,25.584,19.56,25.59z" opacity=".5"></path>
+                          <path fill="#90caf9" d="M19.56,25.59l4.72-4.72c-0.004-0.005-0.008-0.009-0.011-0.013l-4.717,4.717	C19.554,25.579,19.557,25.584,19.56,25.59z" opacity=".5"></path>
+                          <path fill="#4961DC" d="M24,7.576c-8.133,0-14.75,6.617-14.75,14.75c0,0.233,0.024,0.46,0.035,0.69h6.5	c-0.019-0.228-0.035-0.457-0.035-0.69c0-4.549,3.701-8.25,8.25-8.25c1.969,0,3.778,0.696,5.198,1.851l4.598-4.598	C31.188,9.003,27.761,7.576,24,7.576z"></path>
+                          <path fill="#90caf9" d="M15.712,31.5L15.712,31.5c-0.001,0-0.001,0-0.002,0c-0.611,0-1.188-0.137-1.712-0.373	l-4.71,4.71C11.081,37.188,13.301,38,15.71,38c0.001,0,0.001,0,0.002,0v0H24v-6.5H15.712z" opacity=".5"></path>
+                          <path fill="#4C6FF2" d="M15.712,31.5L15.712,31.5c-0.001,0-0.001,0-0.002,0c-0.611,0-1.188-0.137-1.712-0.373l-4.71,4.71	C11.081,37.188,13.301,38,15.71,38c0.001,0,0.001,0,0.002,0v0H24v-6.5H15.712z"></path>
+                          <path fill="#6A98F0" d="M11.5,27.29c0-2.32,1.89-4.21,4.21-4.21c1.703,0,3.178,1.023,3.841,2.494l4.717-4.717	c-1.961-2.602-5.065-4.277-8.559-4.277C9.81,16.58,5,21.38,5,27.29c0,3.491,1.691,6.59,4.288,8.547l4.71-4.71	C12.53,30.469,11.5,28.999,11.5,27.29z"></path>
+                        </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#1976d2" d="M38.193,18.359c-0.771-2.753-2.319-5.177-4.397-7.03l-4.598,4.598	c1.677,1.365,2.808,3.374,3.014,5.648v1.508c0.026,0,0.05-0.008,0.076-0.008c2.322,0,4.212,1.89,4.212,4.212S34.61,31.5,32.288,31.5	c-0.026,0-0.05-0.007-0.076-0.008V31.5h-6.666H24V38h8.212v-0.004c0.026,0,0.05,0.004,0.076,0.004C38.195,38,43,33.194,43,27.288	C43,23.563,41.086,20.279,38.193,18.359z"></path>
+                      <path fill="#ffe082" d="M19.56,25.59l4.72-4.72c-0.004-0.005-0.008-0.009-0.011-0.013l-4.717,4.717	C19.554,25.579,19.557,25.584,19.56,25.59z" opacity=".5"></path>
+                      <path fill="#90caf9" d="M19.56,25.59l4.72-4.72c-0.004-0.005-0.008-0.009-0.011-0.013l-4.717,4.717	C19.554,25.579,19.557,25.584,19.56,25.59z" opacity=".5"></path>
+                      <path fill="#ff3d00" d="M24,7.576c-8.133,0-14.75,6.617-14.75,14.75c0,0.233,0.024,0.46,0.035,0.69h6.5	c-0.019-0.228-0.035-0.457-0.035-0.69c0-4.549,3.701-8.25,8.25-8.25c1.969,0,3.778,0.696,5.198,1.851l4.598-4.598	C31.188,9.003,27.761,7.576,24,7.576z"></path>
+                      <path fill="#90caf9" d="M15.712,31.5L15.712,31.5c-0.001,0-0.001,0-0.002,0c-0.611,0-1.188-0.137-1.712-0.373	l-4.71,4.71C11.081,37.188,13.301,38,15.71,38c0.001,0,0.001,0,0.002,0v0H24v-6.5H15.712z" opacity=".5"></path>
+                      <path fill="#4caf50" d="M15.712,31.5L15.712,31.5c-0.001,0-0.001,0-0.002,0c-0.611,0-1.188-0.137-1.712-0.373l-4.71,4.71	C11.081,37.188,13.301,38,15.71,38c0.001,0,0.001,0,0.002,0v0H24v-6.5H15.712z"></path>
+                      <path fill="#ffc107" d="M11.5,27.29c0-2.32,1.89-4.21,4.21-4.21c1.703,0,3.178,1.023,3.841,2.494l4.717-4.717	c-1.961-2.602-5.065-4.277-8.559-4.277C9.81,16.58,5,21.38,5,27.29c0,3.491,1.691,6.59,4.288,8.547l4.71-4.71	C12.53,30.469,11.5,28.999,11.5,27.29z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#4C5AC4" d="M42,17.3C42,37.8,24,44,24,44S6,37.8,6,17.3c0-2.5,0.2-4.6,0.4-6.3c0.3-2.5,2-4.5,4.4-5.1 C13.9,5,18.8,4,24,4s10.1,1,13.3,1.9c2.4,0.6,4.1,2.7,4.4,5.1C41.8,12.7,42,14.9,42,17.3z"></path>
+                      <path fill="#bdbdbd" d="M24,7c4.9,0,9.5,1,12.5,1.8c1.2,0.3,2,1.3,2.2,2.6c0.2,1.9,0.3,3.9,0.3,5.9c0,15.6-11.5,21.9-15,23.4 c-3.5-1.6-15-7.9-15-23.4c0-2,0.1-4,0.3-5.9c0.1-1.3,1-2.3,2.2-2.6C14.5,8,19.1,7,24,7 M24,4c-5.2,0-10.1,1-13.3,1.9 C8.4,6.5,6.6,8.6,6.4,11C6.2,12.7,6,14.9,6,17.3C6,37.8,24,44,24,44s18-6.2,18-26.7c0-2.5-0.2-4.6-0.4-6.3c-0.3-2.5-2-4.5-4.4-5.1 C34.1,5,29.2,4,24,4L24,4z"></path>
+                      <path fill="#bdbdbd" d="M23 28H25V36H23z"></path>
+                      <path fill="#4C6FF2" d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3l1,3c1.7-1.5,5-4.8,5-10C30,15,24,10,24,10z"></path>
+                      <path fill="#8E9BDE" d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3V10z"></path>
+                      </svg>
+                  </div>
+                  <div class="card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <path fill="#5d4037" d="M42,17.3C42,37.8,24,44,24,44S6,37.8,6,17.3c0-2.5,0.2-4.6,0.4-6.3c0.3-2.5,2-4.5,4.4-5.1 C13.9,5,18.8,4,24,4s10.1,1,13.3,1.9c2.4,0.6,4.1,2.7,4.4,5.1C41.8,12.7,42,14.9,42,17.3z"></path>
+                      <path fill="#4caf50" d="M24,7c4.9,0,9.5,1,12.5,1.8c1.2,0.3,2,1.3,2.2,2.6c0.2,1.9,0.3,3.9,0.3,5.9c0,15.6-11.5,21.9-15,23.4 c-3.5-1.6-15-7.9-15-23.4c0-2,0.1-4,0.3-5.9c0.1-1.3,1-2.3,2.2-2.6C14.5,8,19.1,7,24,7 M24,4c-5.2,0-10.1,1-13.3,1.9 C8.4,6.5,6.6,8.6,6.4,11C6.2,12.7,6,14.9,6,17.3C6,37.8,24,44,24,44s18-6.2,18-26.7c0-2.5-0.2-4.6-0.4-6.3c-0.3-2.5-2-4.5-4.4-5.1 C34.1,5,29.2,4,24,4L24,4z"></path>
+                      <path fill="#dcedc8" d="M23 28H25V36H23z"></path><path fill="#4caf50" d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3l1,3c1.7-1.5,5-4.8,5-10C30,15,24,10,24,10z"></path>
+                      <path fill="#81c784" d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3V10z"></path>
+                      </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </section>
+    <section class="projects" id="projects">
+        <h3 id="projects-h3">My Projects</h3>
+        <div class="projects-content">
+          <div class="projects-container-wrapper">
+            <button class="scroll-button" id="backButton">&#8249;</button>
+            <div class="projects-container scroll-1">
+                <div class="projects-card" id="card-1">
+                    <div class="projects-header"></div>
+                    <div class="projects-info" >
+                        <p class="projects-title">DeepFake Detection</p>
+                        <p id="projects-info-1">Explored and implemented the <strong>Machine Learning algorithm of SVM</strong>
+                and <strong>Deep Learning algorithm of DenseNets</strong>  to detect <strong> DeepFake Images</strong></p>
+                    </div>
+                    <div class="projects-footer">
+                        <p class="projects-tag">#Python  #DeepLearning</p>
+                        <button type="button" class="action">Know more</button>
+                    </div>
+                </div>
+                <div class="projects-card">
+                    <div class="projects-header"></div>
+                    <div class="projects-info">
+                        <p class="projects-title">Personal Portfolio</p>
+                        <p id="projects-info-2">Developed a personal portfolio website from scratch using pure <strong>HTML, CSS and JavaScrip</strong>t</p>
+                    </div>
+                    <div class="projects-footer">
+                        <p class="projects-tag">#HTML #CSS #JavaScript</p>
+                        <button type="button" class="action">Know more</button>
+                    </div>
+                </div>
+                <div class="projects-card">
+                    <div class="projects-header"></div>
+                    <div class="projects-info">
+                        <p class="projects-title">FullStack YouTube Clone</p>
+                        <p id="projects-info-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                            molestiae quas vel sint commodi.</p>
+                    </div>
+                    <div class="projects-footer">
+                        <p class="projects-tag">#Java #AngularJS #SpringBOOT</p>
+                        <button type="button" class="action">Know more</button>
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-button" id="forwardButton">&#8250;</button>
+        </div>
+        </div>
+  
+
+    </section>
+    <section class="contact" id="contact">
+          <h3 id="contact-h3">Contact Me!</h3>
+       
+
+    </section>
+</body>
+<footer class="footer">
+    <h2>Resources used</h2>
+    <button>
+        <a href="https://github.com/Amanyadav0007/Responsive-Navbar/blob/main/script.js" class="github-button" target="_blank">Go to GitHub Repo</a>
+        CLick me</button>
+</footer>
+<script src="script.js"></script>
+</html>
